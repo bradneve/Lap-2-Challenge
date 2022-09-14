@@ -1,9 +1,8 @@
+let counter = 0
+
 function sendPost(e) {
     e.preventDefault();
-    // title = document.querySelector('#title')
-    // person = document.querySelector('#name')
-    // story = document.querySelector('#content')
-    
+    counter =+ 1
         const entryData = {
             title: e.target.title.value,
             name: e.target.name.value,
@@ -20,7 +19,7 @@ function sendPost(e) {
 
         fetch('http://localhost:3000/posts', options)
             .then(r => r.json())
-            // .then(redirect)
+            .then(window.location.replace('view.html?=' + counter))
             .catch(console.warn)
 
 };
