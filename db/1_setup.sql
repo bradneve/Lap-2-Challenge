@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS journals;
+DROP TABLE IF EXISTS posts;
 
-CREATE TABLE journals (
+CREATE TABLE posts (
     id serial PRIMARY KEY,
     title varchar(100) NOT NULL,
     name varchar(100) NOT NULL,
