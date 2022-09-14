@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const booksController = require('../controllers/posts')
+const postsController = require('../controllers/posts')
 
-router.get('/:id', booksController.show)
-router.post('/', booksController.create)
+router.get('/:id', postsController.show)
+router.get('/', postsController.index)
+router.post('/', postsController.create)
 
 module.exports = router;

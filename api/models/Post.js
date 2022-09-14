@@ -7,20 +7,18 @@ module.exports = class Post {
         this.name = data.name;
         this.story = data.story;
     };
-    
-    // static get all(){ 
-    //     return new Promise (async (resolve, reject) => {
-    //         try {
-    //             // console.log(db);
-    //             const result = await db.query('SELECT * FROM authors;')
-    //             const authors = result.rows.map(a => ({ id: a.id, name: a.name }))
-    //             resolve(authors);
-    //         } catch (err) {
-    //             reject("Error retrieving authors")
-    //         }
-    //     })
-    // };
 
+    static get all(){
+        return new Promise (async (resolve, reject) => {
+            try {
+                let postData = await db.query('SELECT * FROM posts;');
+                let posts = postData.rows.map(b => new Post(b));
+                resolve (posts);
+            } catch (err) {
+                reject('Post not found');
+            }
+        });
+    };
 
     static findById(id){
         return new Promise (async (resolve, reject) => {
@@ -34,7 +32,7 @@ module.exports = class Post {
         });
     };
 
-    static create({ title, name, story){
+    static create({ title, name, story }){
         return new Promise (async (resolve, reject) => {
             try {
                 let postData = await db.query(`INSERT INTO posts 
