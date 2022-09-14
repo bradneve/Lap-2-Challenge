@@ -1,0 +1,9 @@
+{
+  "name": "client",
+  "scripts": {
+    "dev": "http-server"
+  },
+  "dependencies": {
+    "http-server": "^14.1.0"
+  }
+}
